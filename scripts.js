@@ -1,36 +1,22 @@
-const minWidth = 768; // Minimum width for desktop devices
-const isDesktop = window.innerWidth > minWidth || screen.width > minWidth;
-
-if (isDesktop)
-  alert(
-    "Note: This site is optimized for mobile phones only. Sorry if you have it on the computer.",
-  );
+const resultButtonGetCurrentTimestamp = document.getElementById(
+  "result-button-get-current-timestamp"
+);
+const timestampInput = document.getElementById(
+  "input-convert-timestamp-to-date"
+);
+const resultButtonConvertTimestampToDate = document.getElementById(
+  "result-button-convert-timestamp-to-date"
+);
 
 function getCurrentTimestamp() {
-  const resultButton = document.getElementById(
-    "result-button-get-current-timestamp",
-  );
-
-  const currentTimestamp = Math.floor(Date.now() / 1000);
-
-  resultButton.textContent = currentTimestamp;
-  return currentTimestamp;
+  return Math.floor(Date.now() / 1000);
 }
 
 function convertTimestampToDate(timestamp) {
-  const resultButton = document.getElementById(
-    "result-button-convert-timestamp-to-date",
-  );
-  const timestampInput = document.getElementById(
-    "input-convert-timestamp-to-date",
-  );
-
   const date = new Date(parseInt(timestamp || timestampInput.value) * 1000);
   const localizedDate = date
     .toLocaleString("sv", { timeZoneName: "short" })
     .replace(",", "");
-
-  resultButton.textContent = localizedDate;
   return localizedDate;
 }
 
@@ -51,3 +37,14 @@ function copyTextToClipboard(text) {
   document.execCommand("copy");
   document.body.removeChild(textArea);
 }
+
+setInterval(() => {
+  const currentTimestamp = getCurrentTimestamp();
+  resultButtonGetCurrentTimestamp.textContent = currentTimestamp;
+
+  if (timestampInput.value == "") {
+    resultButtonConvertTimestampToDate.textContent = convertTimestampToDate(
+      getCurrentTimestamp()
+    );
+  }
+}, 1000);

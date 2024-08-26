@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -15,7 +15,7 @@
     <meta name="author" content="HarukaYamamoto0" />
     <meta name="robots" content="index, follow" />
     <meta name="language" content="English" />
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -39,10 +39,6 @@
             <img src="./assets/clipboard.svg" />
           </span>
         </button>
-
-        <button onclick="getCurrentTimestamp()" class="action-button">
-          Get Timestamp!
-        </button>
       </section>
 
       <div class="divider"></div>
@@ -55,7 +51,10 @@
           type="number"
           placeholder="Put your timestamp here!"
         />
-        <button onclick="convertTimestampToDate()" class="action-button">
+        <button
+          onclick="resultButtonConvertTimestampToDate.textContent = convertTimestampToDate()"
+          class="action-button"
+        >
           Convert!
         </button>
         <button class="result-button">
